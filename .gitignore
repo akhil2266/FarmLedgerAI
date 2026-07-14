@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+venv/
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+frontend/build/
+backend/dist/
+
+# Uploads (user-generated content)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# AI trained models & generated data (large binary artifacts — see docs/DEPLOYMENT.md)
+ai/trained_models/*
+!ai/trained_models/.gitkeep
+ai/data/synthetic_disease_dataset/
+ai/data/plant_disease_dataset/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Test coverage
+coverage/
+.pytest_cache/

@@ -1,0 +1,24 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# ML / Data
+scikit-learn==1.5.2
+xgboost==2.1.1
+pandas==2.2.2
+numpy==1.26.4
+joblib==1.4.2
+
+# Deep learning (disease detection CNN)
+tensorflow==2.17.0
+keras==3.5.0
+
+# Computer vision
+opencv-python-headless==4.10.0.84
+Pillow==10.4.0
+
+# Utilities
+python-dotenv==1.0.1
+requests==2.32.3

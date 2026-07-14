@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "framework": "create-react-app",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "env": {
+    "REACT_APP_API_BASE_URL": "@farmledger_api_base_url",
+    "REACT_APP_GOOGLE_CLIENT_ID": "@farmledger_google_client_id"
+  }
+}
