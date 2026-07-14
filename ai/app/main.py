@@ -1,14 +1,12 @@
+import subprocess
+import sys
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.routers import crop_recommendation, profit_prediction, price_prediction, disease_detection, financial_advisor
-
-app = FastAPI(
-
-import subprocess
-import sys
-from pathlib import Path
 
 
 def _ensure_models_trained():
@@ -34,6 +32,8 @@ def _ensure_models_trained():
 
 
 _ensure_models_trained()
+
+app = FastAPI(
     title="FarmLedger AI - AI Service",
     description="FastAPI microservice powering crop recommendation, profit/price prediction, "
                  "crop disease detection, and the AI financial advisor for FarmLedger AI.",
