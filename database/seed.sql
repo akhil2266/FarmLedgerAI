@@ -4,7 +4,6 @@
 -- NOTE: All demo password hashes below = bcrypt hash of "Password@123"
 -- =====================================================================
 
-USE farmledger_ai;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ---------------------------------------------------------------------

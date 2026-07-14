@@ -7,10 +7,7 @@
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
-CREATE DATABASE IF NOT EXISTS farmledger_ai
-  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-USE farmledger_ai;
 
 -- =====================================================================
 -- 1. USERS  (farmers, buyers, admins) - single table w/ role discriminator
