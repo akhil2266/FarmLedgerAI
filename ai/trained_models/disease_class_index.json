@@ -1,0 +1,10 @@
+{
+  "0": "bacterial_blight",
+  "1": "early_blight",
+  "2": "healthy",
+  "3": "leaf_rust",
+  "4": "leaf_spot",
+  "5": "mosaic_virus",
+  "6": "powdery_mildew",
+  "7": "root_rot"
+}

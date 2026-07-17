@@ -20,6 +20,8 @@ backend/uploads/*
 # AI trained models & generated data (large binary artifacts — see docs/DEPLOYMENT.md)
 ai/trained_models/*
 !ai/trained_models/.gitkeep
+!ai/trained_models/disease_detection_model.keras
+!ai/trained_models/disease_class_index.json
 ai/data/synthetic_disease_dataset/
 ai/data/plant_disease_dataset/
 
