@@ -10,7 +10,9 @@ from app.routers import crop_recommendation, profit_prediction, price_prediction
 
 
 def _ensure_models_trained():
-    """Auto-trains any missing models on startup, checked individually."""
+    """Auto-trains lightweight models on startup. Disease detection (CNN) is
+    intentionally excluded here — training it requires more RAM than Render's
+    free tier provides. See docs: train it locally and commit the model file instead."""
     model_dir = settings.model_dir
     scripts_dir = Path(__file__).resolve().parent.parent / "scripts"
 
@@ -18,7 +20,6 @@ def _ensure_models_trained():
         ("crop_recommendation_model.joblib", "train_crop_recommendation.py"),
         ("profit_prediction_model.joblib", "train_profit_prediction.py"),
         ("price_prediction_model.joblib", "train_price_prediction.py"),
-        ("disease_detection_model.keras", "train_disease_detection.py"),
     ]
 
     for filename, script in models_to_check:
