@@ -39,7 +39,7 @@ from app.services.disease_detection_service import MODEL_PATH, CLASS_INDEX_PATH,
 REAL_DATASET_DIR = settings.data_dir / "plant_disease_dataset"
 SYNTHETIC_DIR = settings.data_dir / "synthetic_disease_dataset"
 CLASSES = list(TREATMENT_MAP.keys())  # healthy, bacterial_blight, leaf_rust, ...
-IMAGES_PER_CLASS_SYNTHETIC = 300
+IMAGES_PER_CLASS_SYNTHETIC = 40
 
 
 def _generate_synthetic_dataset():
@@ -147,8 +147,7 @@ if __name__ == "__main__":
     model.summary()
 
     print("Training...")
-    model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=12, batch_size=32)
-
+    model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=5, batch_size=16)
     settings.model_dir.mkdir(parents=True, exist_ok=True)
     model.save(MODEL_PATH)
     with open(CLASS_INDEX_PATH, "w") as f:

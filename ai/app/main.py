@@ -10,25 +10,26 @@ from app.routers import crop_recommendation, profit_prediction, price_prediction
 
 
 def _ensure_models_trained():
-    """Auto-trains all models on first startup if trained artifacts don't exist yet."""
+    """Auto-trains any missing models on startup, checked individually."""
     model_dir = settings.model_dir
-    required_files = [
-        model_dir / "crop_recommendation_model.joblib",
-        model_dir / "profit_prediction_model.joblib",
-        model_dir / "price_prediction_model.joblib",
-    ]
-    if all(f.exists() for f in required_files):
-        print("[startup] Models already trained, skipping.")
-        return
-
-    print("[startup] Trained models not found — training now (this may take a few minutes)...")
     scripts_dir = Path(__file__).resolve().parent.parent / "scripts"
-    for script in ["train_crop_recommendation.py", "train_profit_prediction.py", "train_price_prediction.py"]:
-        print(f"[startup] Running {script}...")
+
+    models_to_check = [
+        ("crop_recommendation_model.joblib", "train_crop_recommendation.py"),
+        ("profit_prediction_model.joblib", "train_profit_prediction.py"),
+        ("price_prediction_model.joblib", "train_price_prediction.py"),
+        ("disease_detection_model.keras", "train_disease_detection.py"),
+    ]
+
+    for filename, script in models_to_check:
+        if (model_dir / filename).exists():
+            print(f"[startup] {filename} already exists, skipping {script}.")
+            continue
+        print(f"[startup] Training missing model: running {script}...")
         result = subprocess.run([sys.executable, str(scripts_dir / script)])
         if result.returncode != 0:
             print(f"[startup] WARNING: {script} failed with code {result.returncode}")
-    print("[startup] Model training complete.")
+    print("[startup] Model training check complete.")
 
 
 _ensure_models_trained()
